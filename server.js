@@ -1,11 +1,12 @@
-const http = require('http')
+const express = require('express');
+const app = express();
 const port = 3000
 
-const server = http.createServer((req, res)=>{
-    
+app.get("/",(req,res)=>{
+    res.status(200).send('<h1>Hi</h1>')
 })
 
-server.listen(port, (error)=>{
+app.listen(port, (error)=>{
     console.log("Listening on port: "+ port)
     if(error){
         console.log("something went wrong");
