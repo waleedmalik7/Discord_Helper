@@ -1,8 +1,10 @@
 from time import sleep
 import requests
 
-token = ''
-channel_id = 
+
+#Need to uncomment Below:
+# token = ''
+# channel_id = 
 
 def sendMessage(token, channel_id, message):
     my_data = {
@@ -35,9 +37,11 @@ def getMessageId(token, channel_id, last_message_id):
 #Each time we run the messageId we have to identify a start point as a param
 
 #Start with current ID, returns 50 message IDs if author is 'waffleed' and ID of the next start point
-currID = 
+
+#Need to change currID
+currID = 1
 error = False
-while(currID != ):
+while(currID != 1):
     currID, messages = getMessageId(token,channel_id,currID)
     for message in messages:
         if message["author"]["username"] == 'waffleed':
