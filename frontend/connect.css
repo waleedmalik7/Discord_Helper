@@ -1,0 +1,40 @@
+body{
+    background-color: #444242;
+}
+
+.connect-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.connect-form{
+    background: #cef2fd;
+    padding: 20px;
+    text-align: center;
+    width: 900px;
+    border-radius: 20px;
+    flex-direction: column;
+}
+.connect-form label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.connect-form label span {
+    min-width: 100px; /* Adjust width based on your design */
+    text-align: right;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.connect-form input{
+    width: 100%;
+    box-sizing: border-box;
+}
+
