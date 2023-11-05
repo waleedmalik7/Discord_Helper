@@ -7,34 +7,81 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    height: 100vh;
+    height: 98vh;
     background-color: grey;
     border-radius: 10px;
+    margin: 0;
 }
 
 .connect-form{
-    background: #cef2fd;
-    padding: 20px;
+    padding: 50px;
+    background: #5d5f5f;
+    width: 500px;
+    border-radius: 30px;
     text-align: center;
-    width: 900px;
-    border-radius: 20px;
-    flex-direction: column;
-}
-.connect-form label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
 }
 
-.connect-form label span {
-    min-width: 100px; /* Adjust width based on your design */
-    text-align: right;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-.connect-form input{
-    width: 100%;
+input[type="text"],
+input[type="password"]{
+    font-family: 'Arial';
+    display: block;
+    color: rgba(255, 255, 255, 0.9);;
+    background-color: #8c9dff67;
+    padding: 15px 12px;
+    margin: 10px auto;
+    border: none;
+    outline: none;
     box-sizing: border-box;
+    width: 80%;
+    border-radius: 16px;
+    font-size:16px;
+    letter-spacing: 2px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus{
+    outline: 1px solid #8c9dff;
+    transform: scale(1.01);
 }
 
+.submit{
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 0, 0, 0.699);
+    margin: 10px auto;
+    text-align: left;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size:16px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: rgba(255, 60, 0, 0.7);
+    color: rgb(206, 206, 206);
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.4) 0 7px 13px -3px, rgb(206, 206, 206) 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+p{
+    display: inline;
+    align-items: center;
+    margin: 0;
+    font-family: 'Arial';
+    font-weight: bold;
+}
+
+.submit img{
+    background-color: rgb(206, 206, 206);
+    border-radius: 20px;
+    margin: 0;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.connect-form input::placeholder{
+    color: rgba(255, 255, 255, 0.466);
+    font-weight: bold;
+    letter-spacing: 0px;
+}

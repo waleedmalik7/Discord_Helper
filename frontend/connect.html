@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="connect.css">
+    <link rel="icon" type="image/x-icon" href="discord.png">
     <title>Document</title>
 </head>
 <body>
     <div class="connect-container">
-        <form class="connect-form">
-            <label for="token"><span>Token:</span></label>
-            <input id="token" type="text">
-            <label for="channel"><span>Channel ID:</span></label>
-            <input id="channel" type="password">
-            <input type="submit" class="submit">
+        <form class="connect-form" action="/delete">
+            <div class="img-container">
+                <img src="discord.png" alt="discord icon" height="100px" width="100px">
+            </div>
+            <input id="token" type="text" placeholder="Discord Token" required autocomplete="off">
+            <input id="channel" type="password" placeholder="Channel ID" required>
+            <button type="submit" class="submit">
+                <p>Delete History</p>
+                <img src="delete.png" alt="delete icon" height="30px" width="30px">
+            </button>
         </form>
     </div>
     <script src="app.js"></script>
