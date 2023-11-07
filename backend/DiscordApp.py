@@ -1,16 +1,14 @@
-from time import sleep
+import sys
 import requests
+from time import sleep
 
 
-#Need to uncomment Below:
-token = ''
-channel_id = 1
-username = '1'
+command_line_args = sys.argv
+token = command_line_args[1]
+channel_id = command_line_args[2]
 
 def sendMessage(token, channel_id, message):
-    my_data = {
-        "content": message,
-    }
+    my_data = {"content": message}
     my_header = {"authorization": token}
     url = f'https://discord.com/api/v9/channels/{channel_id}/messages'
     
@@ -51,17 +49,19 @@ def getUsername(token):
 
 #Need to change currID
 
-currID = 1
-error = False
+currID = getLatestMessageId(token,channel_id)
+username = getUsername(token)
 
-while(currID != 1):
-    currID, messages = getMessageId(token,channel_id,currID)
-    for message in messages:
-        if message["author"]["username"] == username:
-            print("Deleting:", message["content"])
-            sleep(3)
-            deleteMessage(token,channel_id,message["id"])
-    print("------------------")
+print(currID,username)
+
+# while(currID != 1):
+#     currID, messages = getMessageId(token,channel_id,currID)
+#     for message in messages:
+#         if message["author"]["username"] == username:
+#             print("Deleting:", message["content"])
+#             sleep(3)
+#             deleteMessage(token,channel_id,message["id"])
+#     print("------------------")
 
 #Delete the 50 messages based on ID
 #Update the next start point and continues 
