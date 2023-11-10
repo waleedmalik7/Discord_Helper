@@ -16,14 +16,13 @@ def sendMessage(token, channel_id, message):
 
 def deleteMessage(token, channel_id, message_id):
     url = "https://discord.com/api/v9/channels/{}/messages/{}".format(channel_id,message_id)
-    print(url)
     my_header = {"authorization": token}
     response = requests.delete(url=url,headers=my_header)
     return response.status_code
     
 def getMessageId(token, channel_id, last_message_id):
     url = "https://discord.com/api/v9/channels/{}/messages".format(channel_id)
-    my_header = {"authorization": token}
+    my_header = {"authorization": token, "limit": 5}
     params = {"before": last_message_id}
     response = requests.get(url=url, headers=my_header, params=params)
     messages = response.json()
@@ -34,7 +33,7 @@ def getLatestMessageId(token, channel_id):
     my_header = {"authorization": token}
     response = requests.get(url=url,headers=my_header)
     message = response.json()
-    return message[0]['id']
+    return message[0]['id'], message[0]['content']
 
 def getUsername(token):
     url = "https://discord.com/api/v9/users/@me"
@@ -50,12 +49,13 @@ def getUsername(token):
 #Need to change currID
 counter = 0
 username = getUsername(token)
-currID = getLatestMessageId(token,channel_id)
+currID,latest_message = getLatestMessageId(token,channel_id)
 status = deleteMessage(token,channel_id,currID)
-print("Deleted First Message with status: {}".format(status))
 
-# while(currID != 1):
 with open('deleted_messages.txt', 'w') as file:
+    file.write("STATUS: {}, Deleting: {} \n".format(status,latest_message))
+    file.flush()   
+    # while(currID != 1):
     while(counter < 1):
         counter += 1
         currID, messages = getMessageId(token, channel_id, currID)

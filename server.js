@@ -28,7 +28,13 @@ app.post("/delete",(req,res)=>{
     python_process.on('close', (code) => {
     console.log(`Child process exited with code ${code}`);
     });
-})
+});
+
+app.get("/messages",(req,res)=>{
+    res.status(200).json({
+        line:'information'
+    });
+});
 
 app.listen(port, (error)=>{
     console.log("Listening on port: "+ port)

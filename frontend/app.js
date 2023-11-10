@@ -20,8 +20,14 @@ const postInfo = async () =>{
     })
 }
 
-submit.addEventListener("click",(e)=>{
+const getInfo = async () =>{
+    const response = await fetch("/messages");
+    const message = await response.json();
+    console.log(message.line)
+}   
+
+submit.addEventListener("click",async(e)=>{
     //submit the form
     e.preventDefault();
-    postInfo();
+    await getInfo();
 })
