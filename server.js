@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = 3000
-const { spawn } = require('child_process') //spawn function from child_process module
+const { spawn } = require('child_process'); //spawn function from child_process module
+const fs = require('fs');
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static('frontend'));
@@ -31,9 +32,8 @@ app.post("/delete",(req,res)=>{
 });
 
 app.get("/messages",(req,res)=>{
-    setTimeout(()=>{
-        res.send('information')
-    }, 3000);
+    line = "File Content";
+    res.send(line);
 });
 
 app.listen(port, (error)=>{
