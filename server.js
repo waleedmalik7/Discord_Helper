@@ -31,9 +31,9 @@ app.post("/delete",(req,res)=>{
 });
 
 app.get("/messages",(req,res)=>{
-    res.status(200).json({
-        line:'information'
-    });
+    setTimeout(()=>{
+        res.send('information')
+    }, 3000);
 });
 
 app.listen(port, (error)=>{

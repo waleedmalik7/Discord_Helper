@@ -22,12 +22,13 @@ const postInfo = async () =>{
 
 const getInfo = async () =>{
     const response = await fetch("/messages");
-    const message = await response.json();
-    console.log(message.line)
+    const message = await response.text();
+    console.log(message)
 }   
 
 submit.addEventListener("click",async(e)=>{
     //submit the form
     e.preventDefault();
     await getInfo();
+    console.log('continuing');
 })
