@@ -1,7 +1,13 @@
 const token = document.querySelector("#token");
 const chID = document.querySelector("#channel");
 const submit = document.querySelector(".submit");
-const baseUrl = 'http://localhost:3000/'
+const result = document.querySelector('.result-container');
+
+const addline = (content) =>{
+    const line = document.createElement('div')
+    line.innerText = content;
+    result.append(line);
+}
 
 const postInfo = async () =>{
     const urlSearchParams = new URLSearchParams();
@@ -21,13 +27,16 @@ const postInfo = async () =>{
 }
 
 const getInfo = async () =>{
-    const response = await fetch("/messages");
-    const message = await response.json();
-    console.log(message.line)
+    return fetch("/messages").then((response)=>{
+        return response.text();
+    });
 }   
 
 submit.addEventListener("click",async(e)=>{
     //submit the form
     e.preventDefault();
-    await getInfo();
+    result.style.display = 'flex';
+    getInfo().then((data)=>{
+        addline(data);
+    });
 })
