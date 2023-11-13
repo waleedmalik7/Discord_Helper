@@ -2,10 +2,12 @@ const token = document.querySelector("#token");
 const chID = document.querySelector("#channel");
 const submit = document.querySelector(".submit");
 const result = document.querySelector('.result-container');
+const wrapper = document.querySelector('.content-wrapper');
 
 const addline = (content) =>{
     const line = document.createElement('div')
     line.innerText = content;
+    line.setAttribute('class','return-text')
     result.append(line);
 }
 
@@ -35,7 +37,7 @@ const getInfo = async () =>{
 submit.addEventListener("click",async(e)=>{
     //submit the form
     e.preventDefault();
-    result.style.display = 'flex';
+    wrapper.style.display = 'block';
     getInfo().then((data)=>{
         addline(data);
     });
