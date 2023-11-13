@@ -2,7 +2,6 @@ import sys
 import requests
 from time import sleep
 
-
 command_line_args = sys.argv
 token = command_line_args[1]
 channel_id = command_line_args[2]
@@ -22,7 +21,7 @@ def deleteMessage(token, channel_id, message_id):
     
 def getMessageId(token, channel_id, last_message_id):
     url = "https://discord.com/api/v9/channels/{}/messages".format(channel_id)
-    my_header = {"authorization": token, "limit": 5}
+    my_header = {"authorization": token}
     params = {"before": last_message_id}
     response = requests.get(url=url, headers=my_header, params=params)
     messages = response.json()
@@ -56,13 +55,12 @@ with open('deleted_messages.txt', 'w') as file:
     file.write("STATUS: {}, Deleting: {} \n".format(status,latest_message))
     file.flush()   
     # while(currID != 1):
-    while(counter < 1):
+    while(counter < 20):
         counter += 1
         currID, messages = getMessageId(token, channel_id, currID)
         for message in messages:
             if message["author"]["username"] == username:
                 status = deleteMessage(token,channel_id,message["id"])
-                print(status)
                 sleep(3)
                 file.write("STATUS: {}, Deleting: {} \n".format(status,message["content"]))
                 file.flush()   

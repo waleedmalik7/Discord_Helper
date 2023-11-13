@@ -31,9 +31,12 @@ app.post("/delete",(req,res)=>{
     });
 });
 
-app.get("/messages",(req,res)=>{
-    line = "File Content";
-    res.send(line);
+app.get("/messages", (req,res) => {
+    //read .txt file and create array of lines
+    //send array of lines
+    fs.readFile('deleted_messages.txt', 'utf8', (err,data)=>{
+        res.send(data);
+    })
 });
 
 app.listen(port, (error)=>{

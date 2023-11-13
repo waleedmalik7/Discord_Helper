@@ -34,11 +34,13 @@ const getInfo = async () =>{
     });
 }   
 
-submit.addEventListener("click",async(e)=>{
-    //submit the form
+submit.addEventListener("click", async(e) =>{
     e.preventDefault();
     wrapper.style.display = 'block';
-    getInfo().then((data)=>{
-        addline(data);
-    });
+    await postInfo(); 
+    // setTimeout(() => {
+    //     getInfo().then((data)=>{
+    //         console.log(data);
+    //     });
+    // }, 30000);
 })
