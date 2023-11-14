@@ -38,9 +38,14 @@ submit.addEventListener("click", async(e) =>{
     e.preventDefault();
     wrapper.style.display = 'block';
     await postInfo(); 
-    // setTimeout(() => {
-    //     getInfo().then((data)=>{
-    //         console.log(data);
-    //     });
-    // }, 30000);
+    setInterval(() => {
+        getInfo().then((data)=>{
+            formatted_data = data.split('\n');
+            console.log(formatted_data);
+            formatted_data.forEach(line => {
+                addline(line);
+            });
+        });
+        console.log('-------------------');
+    }, 5000);
 })
