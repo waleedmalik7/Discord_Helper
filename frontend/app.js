@@ -39,9 +39,9 @@ submit.addEventListener("click", async(e) =>{
     wrapper.style.display = 'block';
     await postInfo(); 
     setInterval(() => {
+        console.log('Starting')
         getInfo().then((data)=>{
-            formatted_data = data.split('\n');
-            console.log(formatted_data);
+            formatted_data = JSON.parse(data);
             formatted_data.forEach(line => {
                 addline(line);
             });

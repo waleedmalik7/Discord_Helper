@@ -4,6 +4,9 @@ const app = express();
 const port = 3000
 const { spawn } = require('child_process'); //spawn function from child_process module
 const fs = require('fs');
+const readline = require('readline');
+const filePath = 'deleted_messages.txt';
+let lastReadPosition = 0;
 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static('frontend'));
@@ -34,9 +37,26 @@ app.post("/delete",(req,res)=>{
 app.get("/messages", (req,res) => {
     //read .txt file and create array of lines
     //send array of lines
-    fs.readFile('deleted_messages.txt', 'utf8', (err,data)=>{
-        res.send(data);
-    })
+    const fileStream = fs.createReadStream(filePath,{ start: lastReadPosition, encoding: 'utf8' } )
+
+    const rl = readline.createInterface({
+        input:  fileStream,
+        crlfDelay:Infinity,
+    });
+
+    const lines = []
+
+    rl.on('line', (line) => {
+        lines.push(line);
+    });
+
+    rl.on('close',()=>{
+        lastReadPosition = fs.statSync(filePath).size;
+        res.send(lines)
+    });
+    // fs.readFile('deleted_messages.txt', 'utf8', (err,data)=>{
+    //     res.send(data);
+    // })
 });
 
 app.listen(port, (error)=>{

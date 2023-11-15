@@ -52,7 +52,7 @@ currID,latest_message = getLatestMessageId(token,channel_id)
 status = deleteMessage(token,channel_id,currID)
 
 with open('deleted_messages.txt', 'w') as file:
-    file.write("STATUS: {}, Deleting: {} \n".format(status,latest_message))
+    file.write("STATUS: {}, Deleting Message: {} \n".format(status,latest_message))
     file.flush()   
     # while(currID != 1):
     while(counter < 20):
@@ -62,7 +62,7 @@ with open('deleted_messages.txt', 'w') as file:
             if message["author"]["username"] == username:
                 status = deleteMessage(token,channel_id,message["id"])
                 sleep(3)
-                file.write("STATUS: {}, Deleting: {} \n".format(status,message["content"]))
+                file.write("STATUS: {}, Deleting Message: {}\n".format(status,message["content"]))
                 file.flush()   
 
 #Delete the 50 messages based on ID
