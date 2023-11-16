@@ -3,6 +3,8 @@ const chID = document.querySelector("#channel");
 const submit = document.querySelector(".submit");
 const result = document.querySelector('.result-container');
 const wrapper = document.querySelector('.content-wrapper');
+const logo = document.querySelector('.img-container').children;
+console.log(logo);
 
 const addline = (content) =>{
     const line = document.createElement('div')
